@@ -125,12 +125,19 @@ function validateAdmin($username, $password) {
     $sql = "SELECT id, username, password_hash FROM admin WHERE username = ?";
     $stmt = executeQuery($sql, [$username]);
     $admin = $stmt->fetch();
-    
-    if ($admin && password_verify($password, $admin['password_hash'])) {
-        return $admin;
-    }
-    
-    return false;
-}
 
+    if ($admin) {
+        error_log("Admin found: " . json_encode($admin));
+        if (password_verify($password, $admin['password_hash'])) {
+            error_log("Password verified successfully.");
+            return $admin; // Return admin details if valid
+        } else {
+            error_log("Password verification failed.");
+        }
+    } else {
+        error_log("Admin not found for username: " . $username);
+    }
+
+    return false; // Return false if invalid
+}
 ?>

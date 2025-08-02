@@ -1,4 +1,4 @@
 # college-monitor/.htaccess
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.php [QSA,L]
+RewriteRule ^ college-monitor/index.php [QSA,L]

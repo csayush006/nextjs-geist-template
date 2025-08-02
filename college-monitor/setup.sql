@@ -1,11 +1,4 @@
--- setup.sql
--- Database setup script for College Student Activity Monitoring System
 
--- Create database (run this first if database doesn't exist)
--- CREATE DATABASE college_monitor;
--- USE college_monitor;
-
--- Create admin table for storing admin credentials
 CREATE TABLE IF NOT EXISTS admin (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
